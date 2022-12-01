@@ -1,16 +1,36 @@
 import './App.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons'
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+
+import Homepage from './pages/homepage/homepage';
+import Pricing from './pages/pricing/pricing';
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Homepage />,
+    },
+    {
+      path: "homepage",
+      element: <Homepage />,
+    },
+    {
+      path: "pricing",
+      element: <Pricing />,
+    },
+  ]);
+
   return (
    <div>
-    <h1>Project</h1>
-    <a className='btn btn-primary'>Primary</a>
-
-      <FontAwesomeIcon icon={faEnvelope} />
-      <FontAwesomeIcon icon={faMagnifyingGlassChart} />
+    <RouterProvider router={router} />
    </div>
   );
 }
